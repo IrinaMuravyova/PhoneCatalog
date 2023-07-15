@@ -8,7 +8,7 @@ def show_all_contacts() -> None:
 
     with open(FILE_PATH, 'r') as catalog:
         for line in catalog:
-            fio = line.strip().split(',')
+            fio = line.strip().split(',')[0]
             table.add_row(['{:<10}'.format(fio[0].split(' ')[0]), 
                            '{:<10}'.format(fio[0].split(' ')[1]), 
                            '{:<10}'.format(fio[0].split(' ')[2]), 
@@ -16,14 +16,22 @@ def show_all_contacts() -> None:
     
     print(table)
 
+
 def search_name() -> None:
+
     temp_lst = []
+
     with open(FILE_PATH, 'r') as catalog:
         for line in catalog:
             temp_lst.append(line)
-    print(temp_lst)
+    
     searching_name = input('Введите имя для поиска: ')
+    print('\n')
+
     for line in temp_lst:
-        if searching_name in line:
+        founded = False
+        if searching_name.lower() in line.lower() and searching_name.lower() == (line.strip().split(',')[0].split(' ')[1]).lower():
             print(line)
-        else: print("Контакт с этим именем не найден. ")
+            founded = True
+    if founded == False:
+        print("Контакт с этим именем не найден. ")
