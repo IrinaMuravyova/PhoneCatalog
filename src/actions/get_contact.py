@@ -35,3 +35,43 @@ def search_name() -> None:
             founded = True
     if founded == False:
         print("Контакт с этим именем не найден. ")
+
+
+def search_surname() -> None:
+
+    temp_lst = []
+
+    with open(FILE_PATH, 'r') as catalog:
+        for line in catalog:
+            temp_lst.append(line)
+    
+    searching_name = input('Введите фамилию для поиска: ')
+    print('\n')
+
+    for line in temp_lst:
+        founded = False
+        if searching_name.lower() in line.lower() and searching_name.lower() == (line.strip().split(',')[0].split(' ')[0]).lower():
+            print(line)
+            founded = True
+    if founded == False:
+        print("Контакт с этим именем не найден. ")
+
+
+def search_middlename() -> None:
+
+    temp_lst = []
+
+    with open(FILE_PATH, 'r') as catalog:
+        for line in catalog:
+            temp_lst.append(line)
+    
+    searching_name = input('Введите отчество для поиска: ')
+    print('\n')
+
+    for line in temp_lst:
+        founded = False
+        if searching_name.lower() in line.lower() and searching_name.lower() == (line.strip().split(',')[0].split(' ')[2]).lower():
+            print(line)
+            founded = True
+    if founded == False:
+        print("Контакт с этим именем не найден. ")
