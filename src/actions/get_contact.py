@@ -8,10 +8,9 @@ def show_all_contacts() -> None:
 
     with open(FILE_PATH, 'r') as catalog:
         for line in catalog:
-            fio = line.strip().split(',')[0]
-            table.add_row(['{:<10}'.format(fio[0].split(' ')[0]), 
-                           '{:<10}'.format(fio[0].split(' ')[1]), 
-                           '{:<10}'.format(fio[0].split(' ')[2]), 
+            table.add_row(['{:<10}'.format(line.strip().split(',')[0].split(' ')[0]), 
+                           '{:<10}'.format(line.strip().split(',')[0].split(' ')[1]), 
+                           '{:<10}'.format(line.strip().split(',')[0].split(' ')[2]), 
                            line.strip().split(',')[1]])
     
     print(table)
