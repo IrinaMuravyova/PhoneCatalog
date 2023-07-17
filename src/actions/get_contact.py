@@ -28,8 +28,8 @@ def search_name() -> None:
     searching_name = input('Введите имя для поиска: ')
     print('\n')
 
+    founded = False 
     for line in temp_lst:
-        founded = False
         if searching_name.lower() in line.lower() and searching_name.lower() == (line.strip().split(',')[0].split(' ')[1]).lower():
             print(line)
             founded = True
@@ -45,16 +45,16 @@ def search_surname() -> None:
         for line in catalog:
             temp_lst.append(line)
     
-    searching_name = input('Введите фамилию для поиска: ')
+    searching_surname = input('Введите фамилию для поиска: ')
     print('\n')
 
+    founded = False
     for line in temp_lst:
-        founded = False
-        if searching_name.lower() in line.lower() and searching_name.lower() == (line.strip().split(',')[0].split(' ')[0]).lower():
+        if searching_surname.lower() in line.lower() and searching_surname.lower() == (line.strip().split(',')[0].split(' ')[0]).lower():
             print(line)
             founded = True
     if founded == False:
-        print("Контакт с этим именем не найден. ")
+        print("Контакт с этой фамилией не найден. ")
 
 
 def search_middlename() -> None:
@@ -65,13 +65,32 @@ def search_middlename() -> None:
         for line in catalog:
             temp_lst.append(line)
     
-    searching_name = input('Введите отчество для поиска: ')
+    searching_middlename = input('Введите отчество для поиска: ')
     print('\n')
 
+    founded = False
     for line in temp_lst:
-        founded = False
-        if searching_name.lower() in line.lower() and searching_name.lower() == (line.strip().split(',')[0].split(' ')[2]).lower():
+        if searching_middlename.lower() in line.lower() and searching_middlename.lower() == (line.strip().split(',')[0].split(' ')[2]).lower():
             print(line)
             founded = True
     if founded == False:
-        print("Контакт с этим именем не найден. ")
+        print("Контакт с этим отчеством не найден. ")
+
+
+def search_phone_number() -> None:
+    temp_lst = []
+
+    with open(FILE_PATH, 'r') as catalog:
+        for line in catalog:
+            temp_lst.append(line)
+    
+    searching_phone = input('Введите номер телефона для поиска: ')
+    print('\n')
+
+    founded = False
+    for line in temp_lst:
+        if searching_phone in line and searching_phone == line.strip().split(',')[1].strip():
+            print(line)
+            founded = True
+    if founded == False:
+        print("Контакт с этим телефоном не найден. ")
