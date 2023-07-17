@@ -9,13 +9,12 @@ def delete_contact() -> None:
 
     searching_contact = input('Введите какой контакт удалить(имя или фамилию или отчество или номер телефона): ')
     temp_lst = [line for line in catalog_copy if searching_contact  not in line]
+    print(temp_lst)
 
     with open(FILE_PATH, 'w') as catalog:
-        for line in catalog_copy:
+        for line in temp_lst:
             catalog.write(line)
 
-    show_all_contacts()
-    # Почему-то не перезаписывает файл
 
 def change_contact() -> None:
     # with open("data.txt", 'r') as catalog:
